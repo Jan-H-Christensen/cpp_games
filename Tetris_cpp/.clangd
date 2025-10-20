@@ -1,0 +1,14 @@
+
+CompileFlags:
+  Add: [
+    "-std=c++17",
+    "-Iinclude",
+    "-Llib",
+    "-lraylib",
+    "-lm",
+    "-lpthread",
+    "-ldl",
+    "-lGL",
+    "-lrt",
+    "-lX11"
+  ]
