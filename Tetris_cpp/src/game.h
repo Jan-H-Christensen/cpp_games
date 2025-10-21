@@ -18,6 +18,7 @@ public:
   void MoveBlockDown();
 
 private:
+  double softDropLastUpdateTime;
   bool isBlockOutside();
   void RotateBlock();
   void LockBlock();

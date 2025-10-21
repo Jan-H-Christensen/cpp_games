@@ -13,6 +13,7 @@ Game::Game() {
   currentBlock = GetRandomBlock();
   nextBlock = GetRandomBlock();
   gameOver = false;
+  softDropLastUpdateTime = 0;
 }
 Block Game::GetRandomBlock() {
   if (blocks.empty()) {
@@ -41,19 +42,37 @@ void Game::HandleInput() {
     gameOver = false;
     Reset();
   }
-  switch (keyPressed) {
-  case KEY_LEFT:
-    MoveBlockLeft();
-    break;
-  case KEY_RIGHT:
-    MoveBlockRight();
-    break;
-  case KEY_DOWN:
-    MoveBlockDown();
-    break;
-  case KEY_UP:
-    RotateBlock();
-    break;
+
+  if (IsKeyDown(KEY_DOWN)) {
+    double currentTime = GetTime();
+    if (currentTime - softDropLastUpdateTime >= 0.1) {
+      MoveBlockDown();
+      softDropLastUpdateTime = currentTime;
+    }
+  }
+
+  if (IsKeyDown(KEY_LEFT)) {
+    double currentTime = GetTime();
+    if (currentTime - softDropLastUpdateTime >= 0.1) {
+      MoveBlockLeft();
+      softDropLastUpdateTime = currentTime;
+    }
+  }
+
+  if (IsKeyDown(KEY_RIGHT)) {
+    double currentTime = GetTime();
+    if (currentTime - softDropLastUpdateTime >= 0.1) {
+      MoveBlockRight();
+      softDropLastUpdateTime = currentTime;
+    }
+  }
+
+  if (IsKeyDown(KEY_UP)) {
+    double currentTime = GetTime();
+    if (currentTime - softDropLastUpdateTime >= 0.1) {
+      RotateBlock();
+      softDropLastUpdateTime = currentTime;
+    }
   }
 }
 

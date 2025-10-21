@@ -15,7 +15,7 @@ bool EventTriggered(double interval) {
 int main() {
   // init app
 
-  InitWindow(400, 600, "Tetris creazy");
+  InitWindow(450, 520, "Tetris creazy");
   SetTargetFPS(60);
   Game game = Game();
 
@@ -25,7 +25,7 @@ int main() {
 
     game.HandleInput();
 
-    if (EventTriggered(0.02)) {
+    if (EventTriggered(0.2)) {
       game.MoveBlockDown();
     }
 
