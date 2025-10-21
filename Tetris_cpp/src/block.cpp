@@ -1,5 +1,4 @@
 #include "block.h"
-#include "colors.h"
 #include "position.h"
 #include <vector>
 
@@ -33,4 +32,18 @@ std::vector<Position> Block::GetCellPosition() {
     movedTiles.push_back(newPos);
   }
   return movedTiles;
+}
+
+void Block::Rotate() {
+  rotationState++;
+  if (rotationState == cells.size()) {
+    rotationState = 0;
+  }
+}
+
+void Block::UndoRotate() {
+  rotationState--;
+  if (rotationState == -1) {
+    rotationState = cells.size() - 1;
+  }
 }

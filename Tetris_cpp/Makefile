@@ -1,6 +1,6 @@
 
 # Alle Quelldateien hier auflisten
-SRCS = src/main.cpp src/grid.cpp src/colors.cpp src/block.cpp src/blocks.cpp src/position.cpp
+SRCS = src/main.cpp src/grid.cpp src/colors.cpp src/block.cpp src/blocks.cpp src/position.cpp src/game.cpp
 
 default:
 	mkdir -p bin

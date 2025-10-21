@@ -1,26 +1,37 @@
-#include "blocks.cpp"
-#include "grid.h"
+#include "game.h"
 #include "raylib.h"
+
+double lastUpdateTime = 0;
+
+bool EventTriggered(double interval) {
+  double currentTime = GetTime();
+  if (currentTime - lastUpdateTime >= interval) {
+    lastUpdateTime = currentTime;
+    return true;
+  }
+  return false;
+}
 
 int main() {
   // init app
 
-  InitWindow(400, 800, "Tetris creazy");
+  InitWindow(400, 600, "Tetris creazy");
   SetTargetFPS(60);
-
-  Grid grid = Grid();
-  grid.Print();
-
-  IBlock block = IBlock();
+  Game game = Game();
 
   // run app
 
   while (!WindowShouldClose()) {
-    BeginDrawing();
 
+    game.HandleInput();
+
+    if (EventTriggered(0.02)) {
+      game.MoveBlockDown();
+    }
+
+    BeginDrawing();
     ClearBackground(PURPLE);
-    grid.Draw();
-    block.Draw();
+    game.Draw();
     EndDrawing();
   }
 
