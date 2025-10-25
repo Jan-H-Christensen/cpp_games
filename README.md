@@ -18,4 +18,5 @@ The main goal of this project is to improve my C++ skills while having fun. I wi
 Here are some insights into the games that are under development:
 
 ![Placeholder Image 1](https://github.com/Jan-H-Christensen/cpp_games/blob/master/Tetris_V1.png)
+![Placeholder Image 1](https://github.com/Jan-H-Christensen/cpp_games/blob/master/tetris_score.png)
 
