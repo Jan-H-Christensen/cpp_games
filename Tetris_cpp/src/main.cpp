@@ -18,10 +18,9 @@ int main() {
   InitWindow(450, 520, "Tetris creazy");
   SetTargetFPS(60);
 
-  Font font =
-      LoadFontEx("fonts/Bitcount_Grid_Single/"
-                 "BitcountGridSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf",
-                 64, 0, 0);
+  Font font = LoadFontEx(
+      "fonts/BitcountGridSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf", 64,
+      0, 0);
   Game game = Game();
 
   // run app
