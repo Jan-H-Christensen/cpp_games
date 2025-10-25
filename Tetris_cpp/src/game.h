@@ -9,6 +9,7 @@ public:
   Game();
   Grid grid;
   bool gameOver;
+  int score;
   Block GetRandomBlock();
   std::vector<Block> GetAllBlocks();
   void Draw();
@@ -27,4 +28,5 @@ private:
   Block currentBlock;
   Block nextBlock;
   void Reset();
+  void UpdateScore(int linesCleared, int movedDownPoints);
 };

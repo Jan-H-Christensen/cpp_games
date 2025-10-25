@@ -14,6 +14,7 @@ Game::Game() {
   nextBlock = GetRandomBlock();
   gameOver = false;
   softDropLastUpdateTime = 0;
+  score = 0;
 }
 Block Game::GetRandomBlock() {
   if (blocks.empty()) {
@@ -47,6 +48,7 @@ void Game::HandleInput() {
     double currentTime = GetTime();
     if (currentTime - softDropLastUpdateTime >= 0.1) {
       MoveBlockDown();
+      UpdateScore(0, 1);
       softDropLastUpdateTime = currentTime;
     }
   }
@@ -132,7 +134,8 @@ void Game::LockBlock() {
     gameOver = true;
   }
   nextBlock = GetRandomBlock();
-  grid.ClearFullRows();
+  int rowsCleared = grid.ClearFullRows();
+  UpdateScore(rowsCleared, 0);
 }
 
 bool Game::BlockFits() {
@@ -150,4 +153,21 @@ void Game::Reset() {
   blocks = GetAllBlocks();
   currentBlock = GetRandomBlock();
   nextBlock = GetRandomBlock();
+  score = 0;
+}
+
+void Game::UpdateScore(int linesCleared, int moveDownPoints) {
+  switch (linesCleared) {
+  case 1:
+    score += 100;
+    break;
+  case 2:
+    score += 300;
+    break;
+  case 3:
+    score += 500;
+    break;
+  }
+
+  score += moveDownPoints;
 }
