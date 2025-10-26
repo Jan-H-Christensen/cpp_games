@@ -28,6 +28,7 @@ int main() {
 
   while (!WindowShouldClose()) {
 
+    UpdateMusicStream(game.music);
     game.HandleInput();
 
     if (EventTriggered(0.2)) {
@@ -36,6 +37,7 @@ int main() {
 
     BeginDrawing();
     ClearBackground(PURPLE);
+
     DrawTextEx(font, "Score", {300, 15}, 38, 2, WHITE);
     DrawRectangleRounded({265, 55, 170, 60}, 0.3, 6, DARKPURPLE);
 
@@ -46,12 +48,15 @@ int main() {
     DrawTextEx(font, scoreText, {300 + (170 - textSize.x) / 2, 70}, 38, 2,
                WHITE);
     DrawTextEx(font, "Next", {305, 165}, 38, 2, WHITE);
-    DrawRectangleRounded({265, 205, 170, 170}, 0.3, 6, DARKPURPLE);
+    DrawRectangleRounded({270, 205, 150, 150}, 0.3, 6, DARKPURPLE);
+
     game.Draw();
+
     if (game.gameOver) {
       DrawTextEx(font, "Game", {60, 200}, 72, 2, WHITE);
       DrawTextEx(font, "Over", {60, 260}, 72, 2, WHITE);
     }
+
     EndDrawing();
   }
 

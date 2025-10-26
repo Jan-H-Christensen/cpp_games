@@ -15,6 +15,18 @@ Game::Game() {
   gameOver = false;
   softDropLastUpdateTime = 0;
   score = 0;
+  InitAudioDevice();
+  music = LoadMusicStream("sounds/music.mp3");
+  PlayMusicStream(music);
+  rotateSound = LoadSound("sounds/rotate.mp3");
+  claerSound = LoadSound("sounds/clear.mp3");
+}
+
+Game::~Game() {
+  UnloadSound(rotateSound);
+  UnloadSound(claerSound);
+  UnloadMusicStream(music);
+  CloseAudioDevice();
 }
 Block Game::GetRandomBlock() {
   if (blocks.empty()) {
@@ -34,7 +46,19 @@ std::vector<Block> Game::GetAllBlocks() {
 
 void Game::Draw() {
   grid.Draw();
-  currentBlock.Draw();
+  currentBlock.Draw(11, 11);
+
+  switch (nextBlock.id) {
+  case 3:
+    nextBlock.Draw(225, 270);
+    break;
+  case 4:
+    nextBlock.Draw(225, 265);
+    break;
+  default:
+    nextBlock.Draw(235, 260);
+    break;
+  }
 }
 
 void Game::HandleInput() {
@@ -121,6 +145,8 @@ void Game::RotateBlock() {
   currentBlock.Rotate();
   if (isBlockOutside()) {
     currentBlock.UndoRotate();
+  } else {
+    PlaySound(rotateSound);
   }
 }
 
@@ -135,7 +161,10 @@ void Game::LockBlock() {
   }
   nextBlock = GetRandomBlock();
   int rowsCleared = grid.ClearFullRows();
-  UpdateScore(rowsCleared, 0);
+  if (rowsCleared > 0) {
+    PlaySound(claerSound);
+    UpdateScore(rowsCleared, 0);
+  }
 }
 
 bool Game::BlockFits() {
