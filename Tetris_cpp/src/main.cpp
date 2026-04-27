@@ -31,30 +31,38 @@ int main() {
     UpdateMusicStream(game.music);
     game.HandleInput();
 
-    if (EventTriggered(0.2)) {
-      game.MoveBlockDown();
+    if (game.gameStarted && !game.gameOver) {
+      if (EventTriggered(0.2)) {
+        game.MoveBlockDown();
+      }
     }
 
     BeginDrawing();
     ClearBackground(PURPLE);
 
-    DrawTextEx(font, "Score", {300, 15}, 38, 2, WHITE);
-    DrawRectangleRounded({265, 55, 170, 60}, 0.3, 6, DARKPURPLE);
+    if (!game.gameStarted) {
+      DrawTextEx(font, "TETRIS", {80, 100}, 80, 2, WHITE);
+      DrawTextEx(font, "Press ENTER to Start", {40, 250}, 30, 2, WHITE);
+      DrawTextEx(font, "Press ESC to Exit", {80, 300}, 30, 2, WHITE);
+    } else {
+      DrawTextEx(font, "Score", {300, 15}, 38, 2, WHITE);
+      DrawRectangleRounded({265, 55, 170, 60}, 0.3, 6, DARKPURPLE);
 
-    char scoreText[10];
-    sprintf(scoreText, "%d", game.score);
-    Vector2 textSize = MeasureTextEx(font, scoreText, 38, 2);
+      char scoreText[10];
+      sprintf(scoreText, "%d", game.score);
+      Vector2 textSize = MeasureTextEx(font, scoreText, 38, 2);
 
-    DrawTextEx(font, scoreText, {300 + (170 - textSize.x) / 2, 70}, 38, 2,
-               WHITE);
-    DrawTextEx(font, "Next", {305, 165}, 38, 2, WHITE);
-    DrawRectangleRounded({270, 205, 150, 150}, 0.3, 6, DARKPURPLE);
+      DrawTextEx(font, scoreText, {300 + (170 - textSize.x) / 2, 70}, 38, 2,
+                 WHITE);
+      DrawTextEx(font, "Next", {305, 165}, 38, 2, WHITE);
+      DrawRectangleRounded({270, 205, 150, 150}, 0.3, 6, DARKPURPLE);
 
-    game.Draw();
+      game.Draw();
 
-    if (game.gameOver) {
-      DrawTextEx(font, "Game", {60, 200}, 72, 2, WHITE);
-      DrawTextEx(font, "Over", {60, 260}, 72, 2, WHITE);
+      if (game.gameOver) {
+        DrawTextEx(font, "Game", {60, 200}, 72, 2, WHITE);
+        DrawTextEx(font, "Over", {60, 260}, 72, 2, WHITE);
+      }
     }
 
     EndDrawing();

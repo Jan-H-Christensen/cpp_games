@@ -13,6 +13,7 @@ public:
   void HandleInput();
   void MoveBlockDown();
   bool gameOver;
+  bool gameStarted;
   int score;
   Music music;
 

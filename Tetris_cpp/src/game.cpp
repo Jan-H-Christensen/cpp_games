@@ -12,6 +12,7 @@ Game::Game() {
   currentBlock = GetRandomBlock();
   nextBlock = GetRandomBlock();
   gameOver = false;
+  gameStarted = false;
   softDropLastUpdateTime = 0;
   score = 0;
   InitAudioDevice();
@@ -62,8 +63,16 @@ void Game::Draw() {
 
 void Game::HandleInput() {
   int keyPressed = GetKeyPressed();
+  if (!gameStarted) {
+    if (keyPressed == KEY_ENTER) {
+      gameStarted = true;
+    }
+    return;
+  }
+
   if (gameOver && keyPressed != 0) {
     gameOver = false;
+    gameStarted = false;
     Reset();
   }
 
