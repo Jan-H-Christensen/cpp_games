@@ -51,17 +51,10 @@ int main() {
       sprintf(scoreText, "%d", game.score);
       Vector2 textSize = MeasureTextEx(font, scoreText, 38, 2);
 
-<<<<<<< HEAD
       DrawTextEx(font, scoreText, {300 + (170 - textSize.x) / 2, 70}, 38, 2,
                  WHITE);
       DrawTextEx(font, "Next", {305, 165}, 38, 2, WHITE);
       DrawRectangleRounded({270, 205, 150, 150}, 0.3, 6, DARKPURPLE);
-=======
-    DrawTextEx(font, scoreText, {300 + (110 - textSize.x) / 2, 70}, 38, 2,
-               WHITE);
-    DrawTextEx(font, "Next", {305, 165}, 38, 2, WHITE);
-    DrawRectangleRounded({270, 205, 150, 150}, 0.3, 6, DARKPURPLE);
->>>>>>> 60664e6 (clean game)
 
       game.Draw();
 
