@@ -11,8 +11,8 @@ int main() {
   InitWindow(screenWidth, screenHight, "Game of life - Test");
 
   // board
-  int rows = 300;
-  int cols = 400;
+  int rows = 60;
+  int cols = 80;
   std::vector<std::vector<int>> grid(rows, std::vector<int>(cols, 0));
 
   double lastUpdateTime = 0.0;
