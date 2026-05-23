@@ -1,27 +1,27 @@
 # Raylib Game of Life
 
-Ein interaktives "Conways Spiel des Lebens" (Game of Life) geschrieben in C++ unter Verwendung der [raylib](https://www.raylib.com/) Grafikbibliothek.
+An interactive "Conway's Game of Life" implementation written in C++ using the [raylib](https://www.raylib.com/) graphics library.
 
 ## ✨ Features
 
-* **Toroidales Spielfeld (Weltkugel-Effekt):** Zellen wandern nahtlos über die Bildschirmränder hinweg (Pac-Man-Effekt).
-* **Pause-Funktion:** Über die `Leertaste` lässt sich die Evolution jederzeit einfrieren, um den aktuellen Zustand zu analysieren.
-* **Interaktiver Sandkasten (Maus-Steuerung):** * `Linksklick gedrückt halten`: Zellen direkt auf das Spielfeld zeichnen (lebendig setzen).
-  * `Rechtsklick gedrückt halten`: Zellen wieder vom Spielfeld löschen (tot setzen).
-* **Optimierte Simulationsgeschwindigkeit:** Das Spielfeld rendert flüssig mit 60 FPS, während die Evolution kontrolliert mit einer angenehmen Geschwindigkeit (z. B. 10 Generationen pro Sekunde) abläuft.
+* **Toroidal Field (World Globe Effect):** Cells seamlessly cross the screen boundaries, wrapping around to the opposite side (Pac-Man effect).
+* **Pause Functionality:** Freeze the evolution at any time using the `Spacebar` to analyze the current generation.
+* **Interactive Sandbox (Mouse Controls):** * `Hold Left-Click`: Draw and bring new cells to life directly on the grid.
+  * `Hold Right-Click`: Erase cells and set them back to dead.
+* **Optimized Simulation Speed:** The game renders smoothly at 60 FPS while the cellular evolution runs at a controlled, comfortable pace (e.g., 10 generations per second).
 
-## 🛠️ Voraussetzungen
+## 🛠️ Prerequisites
 
-Das Projekt ist für Linux-Systeme konfiguriert und setzt voraus:
-* Ein installierter C++ Compiler (`clang++` oder `g++`)
-* Eine installierte `raylib` Bibliothek
-* `make` für den Build-Prozess
+The project is configured for Linux systems and requires:
+* An installed C++ compiler (`clang++` or `g++`)
+* The `raylib` library installed on your system
+* `make` for the build process
 
-*Hinweis: Die Pfade im Makefile und in den `compile_flags.txt` sind auf das Verzeichnis `/home/j_c/...` eingestellt.*
+*Note: Paths within the Makefile and `compile_flags.txt` are currently set to the `/home/j_c/...` directory.*
 
-## 🚀 Projekt starten
+## 🚀 Getting Started
 
-1. **Kompilieren:**
-   Erstelle das ausführbare Programm mit dem Makefile:
+1. **Compile the Project:**
+   Build the executable program using the Makefile:
    ```bash
    make
