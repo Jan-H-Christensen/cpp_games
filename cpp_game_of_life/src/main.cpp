@@ -1,7 +1,6 @@
 // this is my try to recreate the game of life fram Conways
 
 #include "raylib.h"
-#include <mm_malloc.h>
 #include <vector>
 
 int main() {
