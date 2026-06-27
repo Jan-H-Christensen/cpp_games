@@ -1,1 +1,1 @@
--I/home/j_c/Work/Projects/cpp_projects/raylib/src/
+-I/home/jc/Documents/GameDev/raylib/src/
