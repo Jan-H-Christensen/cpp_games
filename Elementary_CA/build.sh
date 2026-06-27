@@ -1,7 +1,7 @@
 #!/bin/bash
 
-RAYLIB_PATH="/home/jc/Documents/GameDev/raylib/src"
-includes="-Iinclude -I$RAYLIB_PATH"
+RAYLIB_PATH="./lib"
+includes="-Iinclude -I./include"
 defines=""
 warnings="-Wno-writable-strings -Wno-format-security"
 
